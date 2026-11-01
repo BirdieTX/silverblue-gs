@@ -22,12 +22,9 @@ modules:
 
   - type: dnf
     install:
-      exclude:
-        - mangohud
       packages:
+        - gamescope
         - steam
-        - terra-gamescope
-        - terra-mangohud
 
   - type: default-flatpaks
     configurations:
