@@ -6,15 +6,28 @@ base-image: ghcr.io/birdietx/silverblue
 image-version: latest
 
 modules:
-  - type: script
-    scripts:
-      - repo-enable.sh
+  - type: dnf
+    repos:
+      enable:
+        - fedora
+        - fedora-cisco-openh264
+        - fedora-multimedia
+        - terra
+        - terra-mesa
+        - updates
+        - updates-archive
+      copr:
+        enable:
+          - ublue-os/packages
 
   - type: dnf
     install:
+      exclude:
+        - mangohud
       packages:
-        - gamescope
         - steam
+        - terra-gamescope
+        - terra-mangohud
 
   - type: default-flatpaks
     configurations:
@@ -45,7 +58,32 @@ modules:
           - org.gnome.Weather
           - org.libreoffice.LibreOffice
 
-  - type: script
-    scripts:
-      - repo-disable.sh
+  - type: dnf
+    repos:
+      disable:
+        - fedora
+        - fedora-cisco-openh264
+        - fedora-multimedia
+        - terra
+        - terra-mesa
+        - updates
+        - updates-archive
+      copr:
+        disable:
+          - ublue-os/packages
+
+  - type: brew
+    auto-update: true
+    auto-upgrade: true
+    brew-analytics: false
+    update-interval: 7d
+    update-wait-after-boot: 10m
+    upgrade-interval: 7d
+    upgrade-wait-after-boot: 30m
+
+  - type: os-release
+    properties:
+      PRETTY_NAME: "Fedora Linux 44 (Silverblue)"
+      VERSION_CODENAME: "Bluebird GS"
+
   - type: signing
