@@ -9,6 +9,7 @@ modules:
   - type: dnf
     repos:
       enable:
+        - brave-browser
         - fedora
         - fedora-cisco-openh264
         - fedora-multimedia
@@ -31,33 +32,14 @@ modules:
       - notify: false
         scope: system
         install:
-          - com.brave.Browser
-          - com.github.neithern.g4music
-          - com.github.tchx84.Flatseal
           - com.mattjakeman.ExtensionManager
           - com.saivert.pwvucontrol
           - com.vixalien.sticky
-          - io.missioncenter.MissionCenter
-          - org.gnome.baobab
-          - org.gnome.Calculator
-          - org.gnome.Calendar
-          - org.gnome.Characters
-          - org.gnome.clocks
-          - org.gnome.Decibels
-          - org.gnome.font-viewer
-          - org.gnome.Logs
-          - org.gnome.Loupe
-          - org.gnome.Papers
-          - org.gnome.Showtime
-          - org.gnome.SimpleScan
-          - org.gnome.Snapshot
-          - org.gnome.TextEditor
-          - org.gnome.Weather
-          - org.libreoffice.LibreOffice
 
   - type: dnf
     repos:
       disable:
+        - brave-browser
         - fedora
         - fedora-cisco-openh264
         - fedora-multimedia
@@ -77,6 +59,10 @@ modules:
     update-wait-after-boot: 10m
     upgrade-interval: 7d
     upgrade-wait-after-boot: 30m
+
+  - type: script
+    scripts:
+      - post.sh
 
   - type: os-release
     properties:
