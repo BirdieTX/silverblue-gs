@@ -13,6 +13,7 @@ modules:
         - fedora
         - fedora-cisco-openh264
         - fedora-multimedia
+        - fedora-rar
         - terra
         - terra-mesa
         - updates
@@ -20,6 +21,10 @@ modules:
       copr:
         enable:
           - ublue-os/packages
+
+  - type: script
+    snippets:
+      - "dnf5 upgrade --allow-vendor-change --assumeyes --refresh"
 
   - type: dnf
     install:
@@ -43,6 +48,7 @@ modules:
         - fedora
         - fedora-cisco-openh264
         - fedora-multimedia
+        - fedora-rar
         - terra
         - terra-mesa
         - updates
@@ -59,10 +65,6 @@ modules:
     update-wait-after-boot: 10m
     upgrade-interval: 7d
     upgrade-wait-after-boot: 30m
-
-  - type: script
-    scripts:
-      - post.sh
 
   - type: os-release
     properties:
