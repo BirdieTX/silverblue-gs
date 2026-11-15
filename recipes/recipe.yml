@@ -34,15 +34,6 @@ modules:
         - scx-tools
         - steam
 
-  - type: default-flatpaks
-    configurations:
-      - notify: false
-        scope: system
-        install:
-          - com.mattjakeman.ExtensionManager
-          - com.saivert.pwvucontrol
-          - com.vixalien.sticky
-
   - type: dnf
     repos:
       disable:
